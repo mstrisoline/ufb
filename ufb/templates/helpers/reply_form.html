@@ -1,0 +1,15 @@
+{% macro render(reply_form) %}
+<dl>
+{% for field in reply_form if field.type not in ["HiddenField", "CSRFTokenField"] %}
+<dd>{{ field }}
+{% if field.errors %}
+<ul class="errors">
+{% for error in field.errors %}
+<li>{{error}}</li>
+{% endfor %}
+</ul>
+{% endif %}</dd>
+{% endfor %}
+</dl>
+{{ reply_form.hidden_tag() }}
+{% endmacro %}

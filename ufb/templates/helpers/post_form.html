@@ -1,0 +1,17 @@
+{% macro render(post_form) %}
+<dl>
+{% for field in post_form if field.type not in ["HiddenField", "CSRFTokenField"] %}
+{% if field.errors %}
+<ul class="errors">
+{% for error in field.errors %}
+<li>{{error}}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endfor %}
+<dt>{{ post_form.post_body.label}}</dt>
+<dd>{{ post_form.post_body }}</dd>
+<dd>{{ post_form.submit }}</dd>
+</dl>
+{{ post_form.hidden_tag() }}
+{% endmacro %}

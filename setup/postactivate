@@ -1,0 +1,6 @@
+#!/bin/bash
+# This hook is sourced after this virtualenv is activated.
+cd ~/Envs/ufb
+
+export APP_SETTINGS="config.DevelopmentConfig"
+export DATABASE_URL="postgresql://localhost/ufb
