@@ -1,10 +1,24 @@
+{#
+Basic Profile Page, This was baiscally used to develop the Posts and Replies and all general data pertaining to a user
+#}
+
 {% extends "layout.html" %}
+
+{# 
+Load the form helper templates
+Uses general forms helper for the profie 
+Uses specific forms helpers for posts and replies
+#}
 {% import "helpers/forms.html" as forms %}
 {% import "helpers/post_form.html" as post_forms %}
 {% import "helpers/reply_form.html" as reply_forms %}
+
 {% block title %}Welcome to {{user.first}} {{user.last}} UFB's Profile!{% endblock %}
 {% block content %}
 {{super()}}
+
+{# Load all the form templates into the body #}
+
   <form action="{{ url_for('site.submit_post', ext=request.args.get('next', ''), author_id=current_user.id, nickname=current_user.nickname) }}" method="POST">
   {{ post_forms.render(post_form) }}
   </form>

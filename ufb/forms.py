@@ -1,3 +1,6 @@
+#Single File to manage all forms generated via WTF Forms and their validation
+#Most of these should be very self explanitory
+
 from flask.ext.wtf import Form
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from wtforms import fields
@@ -33,13 +36,16 @@ class RegisterForm(Form):
         if user and nickname is not None:
             raise ValidationError("Email is already registered")
 
+#Place Holder for Generating a Profile Form
 class ProfileForm(Form):
     pass
     
 class PostForm(Form):
     post_body = fields.TextAreaField("Post Something", validators=[Length(min=1, max=254, message="Maximum Length is 254 Characters")])
+    #This is to create a individual form submit rather than an entire page
     submit = fields.SubmitField('Submit New Post')
 
 class ReplyForm(Form):
     reply_body = fields.TextAreaField("Reply to Post", validators=[Length(min=1, max=254, message="Maximum Length is 254 Characters")])
+    #This is to create a individual form submit rather than an entire page
     submit = fields.SubmitField('Reply to post')

@@ -1,3 +1,8 @@
+{#
+Specifc Form Helper that relates to replies
+Useful for multiple forms per page
+#}
+
 {% macro render(reply_form) %}
 <dl>
 {% for field in reply_form if field.type not in ["HiddenField", "CSRFTokenField"] %}
