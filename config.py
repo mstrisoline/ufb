@@ -1,5 +1,6 @@
 import os
 
+#General Application Configuration
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -8,17 +9,15 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     _cwd = os.path.dirname(os.path.abspath(__file__))
 
+#Production Specific Configuration
 class ProductionConfig(Config):
     DEBUG = False
 
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
+#Dev Specific Configuration
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
 
-
+#Testing Specific Configuration
 class TestingConfig(Config):
     TESTING = True
