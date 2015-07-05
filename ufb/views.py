@@ -53,15 +53,17 @@ def profile(nickname=None):
 @site.route('/submit_post/<int:author_id>/<nickname>', methods=('GET', 'POST'))
 @login_required
 def submit_post(nickname=None, author_id=None):
+    form = PostForm()
+    author = User.query.get(author_id)
     if request.method == 'POST':
-        author = User.query.get(author_id)
-        post = Post()
-        post.user_id = author_id
-        post.body = request.form['post_body']
-        db.session.add(post)
-        db.session.commit()
-        return redirect(url_for('site.profile', nickname=author.nickname))
-    return render_template('index.html')
+        if form.validate_on_submit():
+            post = Post()
+            post.user_id = author_id
+            post.body = request.form['post_body']
+            db.session.add(post)
+            db.session.commit()
+            return redirect(url_for('site.profile', nickname=author.nickname))
+    return redirect(url_for('site.profile', nickname=author.nickname))
 
 @site.route('/sbumit_reply/<int:post_id>/<int:author_id>', methods=('GET', 'POST'))
 @login_required
