@@ -8,7 +8,8 @@ site = Blueprint('site', __name__, template_folder='templates')
 
 @site.route("/")
 def index():
-    return render_template('index.html')
+    users = User.query.all()
+    return render_template('index.html', users=users)
 
 @site.route('/login/', methods=('GET', 'POST'))
 def login():

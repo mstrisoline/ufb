@@ -1,1 +1,7 @@
 {% extends "layout.html" %}
+
+{% block content %}
+  {% for u in users %}
+    <li>User Profile: <a href="{{url_for('site.profile', nickname=u.nickname)}}">{{u.first}} {{u.last}}</a></li>
+  {% endfor %}
+{% endblock content %}
