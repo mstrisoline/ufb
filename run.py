@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+
+#Run the modularized application
 from ufb import app, db
 
 if __name__ == "__main__":

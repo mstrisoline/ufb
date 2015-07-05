@@ -1,3 +1,7 @@
+{#
+Generic form helper for pages that use a single form
+#}
+
 {% macro render(form) %}
 <dl>
 {% for field in form if field.type not in ["HiddenField", "CSRFTokenField"] %}

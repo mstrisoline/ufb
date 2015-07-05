@@ -1,3 +1,4 @@
+#Mnager from Flask-Script and Flask-Migrate to handle DB Migrations easily
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 import os

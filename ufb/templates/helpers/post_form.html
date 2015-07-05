@@ -1,3 +1,8 @@
+{#
+Specifc Form Helper that relates to posts
+Useful for multiple forms per page
+#}
+
 {% macro render(post_form) %}
 <dl>
 {% for field in post_form if field.type not in ["HiddenField", "CSRFTokenField"] %}

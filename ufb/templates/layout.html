@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{#
+This is the defualt layout for all pages, it just contains the basic header information and meta data that can be passed back in other html templates
+#}
 <html>
 <head>
 <title>{% block title %}{{ title }}{% endblock %}</title>
@@ -11,9 +14,11 @@
 <li><a href="/">Home</a></li>
 <li><a href="{{url_for('site.profile', nickname=current_user.nickname)}}">Profile</a></li>
   {% if current_user.is_anonymous() %}
-    <a href="{{url_for('site.register')}}">Register</a> / <a href="{{url_for('site.login')}}">Log In</a>
+     <li><a href="{{url_for('site.register')}}">Register</a> / <a href="{{url_for('site.login')}}">Log In</a></li>
   {% endif %}
-</li>
+  {% if current_user.is_authenticated() %}
+    <li><a href="{{url_for('site.logout')}}">Logout</a></li>
+  {% endif %}
 </ul>
 </nav>
 </header>
