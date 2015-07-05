@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% import "helpers/forms.html" as forms %}
+{% block title %}Regester for UFB!{% endblock %}
+{% block content %}
+{{super()}}
+<form action="{{ url_for('site.register', ext=request.args.get('next', 'author_id', 'nickname')) }}" method="POST">
+{{ forms.render(form) }}
+<p><input type="Submit" value="Register Here"></p>
+</form>
+{% endblock content %}

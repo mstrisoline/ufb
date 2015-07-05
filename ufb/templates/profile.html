@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% import "helpers/forms.html" as forms %}
+{% import "helpers/post_form.html" as post_forms %}
+{% import "helpers/reply_form.html" as reply_forms %}
+{% block title %}Welcome to UFB {{current_user.first}} {{current_user.last}}!{% endblock %}
+{% block content %}
+{{super()}}
+  <form action="{{ url_for('site.submit_post', ext=request.args.get('next', ''), author_id=current_user.id, nickname=current_user.nickname) }}" method="POST">
+  {{ post_forms.render(post_form) }}
+  </form>
+<h3>Posts</h3>
+{% for p in posts %}
+  <li>
+    {{p.body}}
+    {% for r in p.replies %}
+      <dd>
+      <li>{{r.author()}}: {{r.body}}</li>
+      </dd>
+    {% endfor %}
+    <form action="{{ url_for('site.submit_reply', ext=request.args.get('next', ''), post_id=p.id, author_id=current_user.id) }}" method="POST">
+    {{ reply_forms.render(reply_form) }}
+    </form>
+  </li>
+{% endfor %}
+{% endblock content %}
