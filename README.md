@@ -22,7 +22,7 @@ This assumes you have already installed the quired system dependencies and set t
 1. `python manage.py db init`
 1. `python manage.py db migrate`
 1. `python manage.py db upgrade`
-1. `pyton run.py`
+1. `python run.py`
 1. [App running on localhost](http://localhost:5000)
 
 ###Usage
