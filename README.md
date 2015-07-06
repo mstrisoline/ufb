@@ -24,7 +24,7 @@ This assumes you have already installed the quired system dependencies and set t
 1. `python manage.py db migrate`
 1. `python manage.py db upgrade`
 1. `pyton run.py`
-1. http://localhost:5000
+1. (http://localhost:5000)
 
 ###Usage
 The usage of this should be fairly self explanitory
